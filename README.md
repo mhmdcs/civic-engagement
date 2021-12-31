@@ -1,6 +1,6 @@
 ## Political Preparedness
 
-PolitcalPreparedness is an example application built to demonstrate core Android Development skills as presented in the Udacity Android Developers Kotlin curriculum. 
+Civic Engagement is an application built to demonstrate core Kotlin and Android Development skills.
 
 This app demonstrates the following views and techniques:
 
@@ -9,6 +9,7 @@ This app demonstrates the following views and techniques:
 * [Glide](https://bumptech.github.io/glide/) to load and cache images by URL.
 * [Room](https://developer.android.com/training/data-storage/room) for local database storage.
 * [Koin](https://insert-koin.io/) for dependency injection.
+* [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) for background-threading.
   
 It leverages the following components from the Jetpack library:
 
