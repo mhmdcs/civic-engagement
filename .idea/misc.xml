@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18697916666666667" />
+        <entry key="app/src/main/res/layout/fragment_election.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_launch.xml" value="0.2928718962597951" />
+        <entry key="app/src/main/res/layout/fragment_representative.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_voter_info.xml" value="0.32450403326356475" />
+        <entry key="app/src/main/res/layout/item_election.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_representative.xml" value="0.45" />
+        <entry key="app/src/main/res/xml/fragment_representative_scene.xml" value="0.21603260869565216" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

@@ -25,7 +25,7 @@ private val retrofit = Retrofit.Builder()
  */
 
 interface CivicsApiService {
-    //TODO: Add elections API Call
+    //TODO: Add elections API Call https://www.googleapis.com/civicinfo/v2/elections?key=[YOUR_APY_KEY]
 
     //TODO: Add voterinfo API Call
 
