@@ -73,8 +73,25 @@ class RepresentativeViewModel(app: Application, private val repository: CivicEng
      */
 
     //Created function get address from geo location
+    fun getAddressFromGeoLocation(address: Address) {
+        this._address.value = address
+        addressLine1.value = address.line1
+        address.line2.let { addressLine2.value = it }
+        city.value = address.city
+        state.value = address.state
+        zip.value = address.zip
+        getRepresentativesByAddress(address)
+    }
 
-    //Created function to get address from individual fields
+    //Create function to get address from individual fields
+    fun fetchRepresentatives() {
+        val addressLine1 = addressLine1.value as String
+        val city = city.value as String
+        val state = state.value as String
+        val zip = zip.value as String
 
+        val address = Address(addressLine1, addressLine2.value, city, state, zip)
+        getRepresentativesByAddress(address)
+    }
 
 }

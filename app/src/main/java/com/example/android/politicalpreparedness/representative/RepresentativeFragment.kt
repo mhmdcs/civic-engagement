@@ -21,6 +21,7 @@ import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListAdapter
 import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListener
 import com.example.android.politicalpreparedness.representative.model.Representative
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import org.koin.android.ext.android.inject
 import java.util.Locale
@@ -29,6 +30,7 @@ class RepresentativeFragment : Fragment() {
 
     private lateinit var binding: FragmentRepresentativeBinding
     private lateinit var representativesListAdapter: RepresentativeListAdapter
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     //Declare ViewModel
     val viewModel: RepresentativeViewModel by inject()
@@ -47,6 +49,7 @@ class RepresentativeFragment : Fragment() {
         //Establish bindings
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
         representativesListAdapter = RepresentativeListAdapter(RepresentativeListener {})
         ArrayAdapter.createFromResource(
@@ -115,28 +118,41 @@ class RepresentativeFragment : Fragment() {
         return (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
     }
 
+//    @SuppressLint("MissingPermission")
+//    private fun getLocation() {
+//        //Get location from LocationServices
+//        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+//        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+//            if (location != null) {
+//                //The geoCodeLocation method is a helper function to change the lat/long location to a human readable street address
+//                viewModel.getRepresentativesByAddress(geoCodeLocation(location))
+//            }
+//        }.addOnFailureListener {
+//            it.printStackTrace()
+//        }
+//    }
+
     @SuppressLint("MissingPermission")
     private fun getLocation() {
         //Get location from LocationServices
-        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-            if (location != null) {
-                //The geoCodeLocation method is a helper function to change the lat/long location to a human readable street address
-                viewModel.getRepresentativesByAddress(geoCodeLocation(location))
+        val locationResult = fusedLocationProviderClient.lastLocation
+        locationResult?.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val location = task.result
+                val address = location?.geoCodeLocation()
+                address?.let { viewModel.getAddressFromGeoLocation(it) }
             }
-        }.addOnFailureListener {
-            it.printStackTrace()
         }
     }
 
 
-    private fun geoCodeLocation(location: Location): Address {
-        val geocoder = Geocoder(context, Locale.getDefault())
-        return geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                .map { address ->
-                    Address(address.thoroughfare, address.subThoroughfare, address.locality, address.adminArea, address.postalCode)
-                }
-                .first()
+    private fun Location.geoCodeLocation(): Address {
+        val geocode = Geocoder(context, Locale.getDefault())
+        return geocode.getFromLocation(latitude, longitude, 1)
+            .map { address ->
+                Address(address.thoroughfare, address.subThoroughfare, address.locality, address.adminArea, address.postalCode)
+            }
+            .first()
     }
 
     private fun hideKeyboard() {
