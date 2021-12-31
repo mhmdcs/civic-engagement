@@ -10,9 +10,13 @@ interface ElectionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg election: Election)
 
+    //Add update query
+    @Update
+    suspend fun updateElection(election: Election)
+
     //Add select all election query
     @Query("SELECT * FROM election_table")
-    fun getAllElections(): LiveData<List<Election>>
+     fun getAllElections(): LiveData<List<Election>>
 
     //Add select single election query
     @Query("SELECT * FROM election_table WHERE id = :id")
@@ -26,10 +30,7 @@ interface ElectionDao {
     @Query("DELETE FROM election_table")
     suspend fun clear()
 
-    @Update
-    suspend fun updateElection(election: Election)
-
     @Query("SELECT * FROM election_table WHERE isFollowed = 1")
-    fun getFollowedElections(): LiveData<List<Election>>
+     fun getFollowedElections(): LiveData<List<Election>>
 
 }

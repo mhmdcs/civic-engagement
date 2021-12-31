@@ -38,7 +38,7 @@ interface CivicsApiService {
 
     //Add elections API Call https://www.googleapis.com/civicinfo/v2/elections?key=[YOUR_APY_KEY]
     @GET("elections") //endpoint
-    suspend fun getElections(): ElectionResponse
+    suspend fun getUpcomingElections(): ElectionResponse
 
     //Add voterinfo API Call https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address=[SOME_ADDRESS]]&electionId=[SOME_ELECTION_ID]&key=[YOUR_APY_KEY]
     @GET("voterinfo") //endpoint
