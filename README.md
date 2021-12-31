@@ -1,4 +1,4 @@
-## Political Preparedness
+## Civic Engagement
 
 Civic Engagement is an application built to demonstrate core Kotlin and Android Development skills.
 
