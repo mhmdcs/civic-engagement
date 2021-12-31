@@ -4,7 +4,12 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools">
 
 <!-- Add data binding node for Voter Info ViewModel via data and variable tags-->
+    <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.android.politicalpreparedness.election.VoterInfoViewModel" />
+    </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -20,6 +25,7 @@ xmlns:tools="http://schemas.android.com/tools">
         android:background="?colorPrimaryDark"
         android:padding="@dimen/default_padding"
         android:singleLine="true"
+        app:title="@{viewModel.election.name}"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/white"
         tools:title="Election Name" />
@@ -30,6 +36,7 @@ xmlns:tools="http://schemas.android.com/tools">
         android:layout_width="0dp"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
+        android:text="@{viewModel.election.electionDay.toString()}"
         android:layout_margin="@dimen/default_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,13 +46,13 @@ xmlns:tools="http://schemas.android.com/tools">
     <!-- Add visual styling and content -->
     <TextView
         android:id="@+id/voter_info_election_information_textview"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
         android:text="@string/election_information"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/header_text_size"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/voter_info_election_date_textview"
         app:layout_constraintTop_toBottomOf="@id/voter_info_election_date_textview" />
@@ -56,6 +63,7 @@ xmlns:tools="http://schemas.android.com/tools">
         android:id="@+id/voter_info_voting_locations_textview"
         android:layout_width="wrap_content"
         android:textColor="@color/black"
+        android:clickable="true"
         android:layout_height="wrap_content"
         android:text="@string/voting_locations"
         app:layout_constraintStart_toStartOf="@id/voter_info_election_date_textview"
@@ -66,6 +74,7 @@ xmlns:tools="http://schemas.android.com/tools">
     <TextView
         android:id="@+id/ballot_information_textview"
         android:textColor="@color/black"
+        android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ballot_information"
@@ -81,6 +90,7 @@ xmlns:tools="http://schemas.android.com/tools">
         android:text="@string/follow_election"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/white"
+        android:onClick="@{()->viewModel.updateElection()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

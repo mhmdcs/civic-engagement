@@ -35,10 +35,7 @@ class ElectionsViewModel(app: Application, private val repository: CivicEngageme
     //navigate to VoterInfo Fragment
     fun navigateToVoterInfo(election: Election) {
         navigationCommand.value = NavigationCommand.To(
-            ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(
-                election.id,
-                election.division
-            )
+            ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(election)
         )
     }
 

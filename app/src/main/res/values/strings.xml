@@ -3,6 +3,8 @@
     <string name="app_name">Civic Engagement</string>
     <string name="upcoming_elections">Upcoming Elections</string>
     <string name="followed_elections">Followed Elections</string>
+    <string name="voterinfo_follow_election">Follow election</string>
+    <string name="voterinfo_unfollow_election">Unfollow election</string>
     <string name="find_my_representatives">Find my representatives</string>
     <string name="election_information">Election Information</string>
     <string name="voting_locations">Voting Locations</string>

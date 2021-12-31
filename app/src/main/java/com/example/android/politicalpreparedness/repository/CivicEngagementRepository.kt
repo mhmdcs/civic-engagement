@@ -32,8 +32,8 @@ class CivicEngagementRepository(
             electionDao.updateElection(election)
     }
 
-     suspend fun getElectionById(id: Int): Election = withContext(ioDispatcher) {
-         electionDao.getElectionById(id)
+     suspend fun getElectionById(id: Int): Election  {
+        return electionDao.getElectionById(id)
      }
 
      suspend fun getVoterInfo(address: String, electionId : Int) = withContext(ioDispatcher) {
