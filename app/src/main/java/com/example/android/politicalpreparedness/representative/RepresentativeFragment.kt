@@ -10,9 +10,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
 import com.example.android.politicalpreparedness.databinding.FragmentVoterInfoBinding
 import com.example.android.politicalpreparedness.network.models.Address
@@ -47,6 +49,14 @@ class RepresentativeFragment : Fragment() {
         binding.viewModel = viewModel
 
         representativesListAdapter = RepresentativeListAdapter(RepresentativeListener {})
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.states,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.representativeDropdownlistState.adapter = adapter
+        }
 
         binding.representativeMyRepresentativesRecyclerview.adapter = representativesListAdapter
 
