@@ -5,14 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
 
 class ElectionsFragment: Fragment() {
+
+    private lateinit var binding: FragmentElectionBinding
 
     //TODO: Declare ViewModel
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
+        binding = FragmentElectionBinding.inflate(inflater)
+
+        return binding.root
 
         //TODO: Add ViewModel values and create ViewModel
 

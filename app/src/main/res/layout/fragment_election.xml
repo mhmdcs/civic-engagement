@@ -48,11 +48,13 @@
             <TextView
                 android:id="@+id/election_followed_elections_textview"
                 android:layout_width="0dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/header_text_size"
+                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
                 android:paddingHorizontal="@dimen/default_padding"
                 android:text="@string/followed_elections"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/election_upcoming_elections_recyclerview" />
