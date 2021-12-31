@@ -42,21 +42,17 @@ class RepresentativeViewModel(app: Application, private val repository: CivicEng
         viewModelScope.launch {
             _representatives.value = arrayListOf()
             if (address != null) {
-                try {
                     _address.value = address
                     val (offices, officials) = repository.getRepresentatives(address)
                     _representatives.value =
                         offices.flatMap { office -> office.getRepresentatives(officials) }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
             }
         }
     }
 
-    fun loadRepresentatives() {
+    fun refreshRepresentatives() {
         viewModelScope.launch {
-            getRepresentativesByAddress(Address(addressLine1.value!!,addressLine2.value,city.value!!,state.value!!,zip.value!!))
+            getRepresentativesByAddress(Address(addressLine1.value!!,addressLine2.value!!,city.value!!,state.value!!,zip.value!!))
         }
     }
 
@@ -74,9 +70,10 @@ class RepresentativeViewModel(app: Application, private val repository: CivicEng
 
     //Created function get address from geo location
     fun getAddressFromGeoLocation(address: Address) {
-        this._address.value = address
+        _address.value = address
         addressLine1.value = address.line1
-        address.line2.let { addressLine2.value = it }
+        addressLine2.value = address.line2
+        addressLine2.value = address.line2
         city.value = address.city
         state.value = address.state
         zip.value = address.zip
