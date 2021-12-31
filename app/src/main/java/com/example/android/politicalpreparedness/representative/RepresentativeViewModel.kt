@@ -42,17 +42,21 @@ class RepresentativeViewModel(app: Application, private val repository: CivicEng
         viewModelScope.launch {
             _representatives.value = arrayListOf()
             if (address != null) {
+                try {
                     _address.value = address
                     val (offices, officials) = repository.getRepresentatives(address)
                     _representatives.value =
                         offices.flatMap { office -> office.getRepresentatives(officials) }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }
 
-    fun refreshRepresentatives() {
+    fun loadRepresentatives() {
         viewModelScope.launch {
-            getRepresentativesByAddress(Address(addressLine1.value!!,addressLine2.value!!,city.value!!,state.value!!,zip.value!!))
+            getRepresentativesByAddress(Address(addressLine1.value!!,addressLine2.value,city.value!!,state.value!!,zip.value!!))
         }
     }
 
@@ -69,26 +73,8 @@ class RepresentativeViewModel(app: Application, private val repository: CivicEng
      */
 
     //Created function get address from geo location
-    fun getAddressFromGeoLocation(address: Address) {
-        _address.value = address
-        addressLine1.value = address.line1
-        addressLine2.value = address.line2
-        addressLine2.value = address.line2
-        city.value = address.city
-        state.value = address.state
-        zip.value = address.zip
-        getRepresentativesByAddress(address)
-    }
 
-    //Create function to get address from individual fields
-    fun fetchRepresentatives() {
-        val addressLine1 = addressLine1.value as String
-        val city = city.value as String
-        val state = state.value as String
-        val zip = zip.value as String
+    //Created function to get address from individual fields
 
-        val address = Address(addressLine1, addressLine2.value, city, state, zip)
-        getRepresentativesByAddress(address)
-    }
 
 }
