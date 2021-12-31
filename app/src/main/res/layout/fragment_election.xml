@@ -5,7 +5,12 @@
 
 
     <!--Add node to connect Election ViewModel via data and variable tags-->
+    <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.android.politicalpreparedness.election.ElectionsViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
