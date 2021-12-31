@@ -11,17 +11,19 @@ import com.example.android.politicalpreparedness.election.adapter.ElectionListAd
 import com.example.android.politicalpreparedness.utils.NavigationCommand
 import org.koin.android.ext.android.inject
 
-class ElectionsFragment: Fragment() {
+class ElectionsFragment : Fragment() {
 
     private lateinit var binding: FragmentElectionBinding
 
     //Add ViewModel values and create ViewModel
-     val viewModel: ElectionsViewModel by inject()
+    val viewModel: ElectionsViewModel by inject()
 
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         binding = FragmentElectionBinding.inflate(inflater)
 

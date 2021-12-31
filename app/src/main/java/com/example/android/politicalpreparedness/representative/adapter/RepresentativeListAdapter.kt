@@ -15,7 +15,8 @@ import com.example.android.politicalpreparedness.databinding.ItemRepresentativeB
 import com.example.android.politicalpreparedness.network.models.Channel
 import com.example.android.politicalpreparedness.representative.model.Representative
 
-class RepresentativeListAdapter(private val clickListener: RepresentativeListener): ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback()){
+class RepresentativeListAdapter(private val clickListener: RepresentativeListener) :
+    ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback()) {
 
     //Create the ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepresentativeViewHolder {
@@ -25,7 +26,7 @@ class RepresentativeListAdapter(private val clickListener: RepresentativeListene
     //Bind the ViewHolder
     override fun onBindViewHolder(holder: RepresentativeViewHolder, position: Int) {
         val item = getItem(position)
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             clickListener.onClick(item)
         }
         holder.bind(item)
@@ -34,7 +35,8 @@ class RepresentativeListAdapter(private val clickListener: RepresentativeListene
 }
 
 //Create RepresentativeViewHolder
-class RepresentativeViewHolder(val binding: ItemRepresentativeBinding): RecyclerView.ViewHolder(binding.root) {
+class RepresentativeViewHolder(val binding: ItemRepresentativeBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Representative) {
         binding.representative = item
@@ -43,7 +45,7 @@ class RepresentativeViewHolder(val binding: ItemRepresentativeBinding): Recycler
         //Show social links ** Hint: Use provided helper methods
         //Show www link ** Hint: Use provided helper methods
 
-        item.official.channels?.let{showSocialLinks(it)}
+        item.official.channels?.let { showSocialLinks(it) }
         item.official.urls?.let { showWWWLinks(it) }
 
 
@@ -62,10 +64,14 @@ class RepresentativeViewHolder(val binding: ItemRepresentativeBinding): Recycler
 
     private fun showSocialLinks(channels: List<Channel>) {
         val facebookUrl = getFacebookUrl(channels)
-        if (!facebookUrl.isNullOrBlank()) { enableLink(binding.itemFacebookIcon, facebookUrl) }
+        if (!facebookUrl.isNullOrBlank()) {
+            enableLink(binding.itemFacebookIcon, facebookUrl)
+        }
 
         val twitterUrl = getTwitterUrl(channels)
-        if (!twitterUrl.isNullOrBlank()) { enableLink(binding.itemTwitterIcon, twitterUrl) }
+        if (!twitterUrl.isNullOrBlank()) {
+            enableLink(binding.itemTwitterIcon, twitterUrl)
+        }
     }
 
     private fun showWWWLinks(urls: List<String>) {

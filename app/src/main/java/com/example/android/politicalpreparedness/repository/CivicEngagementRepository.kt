@@ -13,32 +13,31 @@ import kotlinx.coroutines.withContext
 class CivicEngagementRepository(
     private val electionDao: ElectionDao,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-)
-{
-     val electionsFollowed: LiveData<List<Election>> = electionDao.getFollowedElections()
-     val electionsUpcoming: LiveData<List<Election>> = electionDao.getAllElections()
+) {
+    val electionsFollowed: LiveData<List<Election>> = electionDao.getFollowedElections()
+    val electionsUpcoming: LiveData<List<Election>> = electionDao.getAllElections()
 
-     suspend fun getRepresentatives(address: Address) = withContext(ioDispatcher) {
-            CivicsApi.retrofitService.getRepresentatives(address.zip)
-        }
-
-     suspend fun refreshElectionsData() = withContext(ioDispatcher) {
-                val response = CivicsApi.retrofitService.getUpcomingElections()
-                val elections = response.elections
-                electionDao.insertAll(*elections.toTypedArray())
-        }
-
-     suspend fun updateElection(election: Election) = withContext(ioDispatcher) {
-            electionDao.updateElection(election)
+    suspend fun getRepresentatives(address: Address) = withContext(ioDispatcher) {
+        CivicsApi.retrofitService.getRepresentatives(address.zip)
     }
 
-     suspend fun getElectionById(id: Int): Election  {
-        return electionDao.getElectionById(id)
-     }
+    suspend fun refreshElectionsData() = withContext(ioDispatcher) {
+        val response = CivicsApi.retrofitService.getUpcomingElections()
+        val elections = response.elections
+        electionDao.insertAll(*elections.toTypedArray())
+    }
 
-     suspend fun getVoterInfo(address: String, electionId : Int) = withContext(ioDispatcher) {
-            CivicsApi.retrofitService.getVoterInfo(address, electionId)
-        }
+    suspend fun updateElection(election: Election) = withContext(ioDispatcher) {
+        electionDao.updateElection(election)
+    }
+
+    suspend fun getElectionById(id: Int): Election {
+        return electionDao.getElectionById(id)
+    }
+
+    suspend fun getVoterInfo(address: String, electionId: Int) = withContext(ioDispatcher) {
+        CivicsApi.retrofitService.getVoterInfo(address, electionId)
+    }
 
     suspend fun deleteElection(election: Election) = withContext(ioDispatcher) {
         electionDao.deleteElection(election)

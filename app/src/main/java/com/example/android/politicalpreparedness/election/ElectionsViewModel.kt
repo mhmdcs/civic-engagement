@@ -12,7 +12,8 @@ import com.example.android.politicalpreparedness.utils.SingleLiveEvent
 import kotlinx.coroutines.launch
 
 //Construct ViewModel and provide election datasource
-class ElectionsViewModel(app: Application, private val repository: CivicEngagementRepository): AndroidViewModel(app) {
+class ElectionsViewModel(app: Application, private val repository: CivicEngagementRepository) :
+    AndroidViewModel(app) {
 
     val navigationCommand: SingleLiveEvent<NavigationCommand> = SingleLiveEvent()
 

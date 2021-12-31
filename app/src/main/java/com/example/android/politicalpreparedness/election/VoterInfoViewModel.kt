@@ -11,7 +11,8 @@ import com.example.android.politicalpreparedness.repository.CivicEngagementRepos
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class VoterInfoViewModel(app: Application, private val repository: CivicEngagementRepository): AndroidViewModel(app) {
+class VoterInfoViewModel(app: Application, private val repository: CivicEngagementRepository) :
+    AndroidViewModel(app) {
 
     //Add live data to hold voter info
     private val _voterInfoResult = MutableLiveData<Result<VoterInfoResponse>>()
@@ -33,7 +34,14 @@ class VoterInfoViewModel(app: Application, private val repository: CivicEngageme
         viewModelScope.launch {
             try {
                 _voterInfoResult.postValue(Result.Loading)
-                _voterInfoResult.postValue(Result.Success(repository.getVoterInfo(election.name, election.id)))
+                _voterInfoResult.postValue(
+                    Result.Success(
+                        repository.getVoterInfo(
+                            election.name,
+                            election.id
+                        )
+                    )
+                )
             } catch (exception: Exception) {
                 _voterInfoResult.postValue(Result.Error(exception.message ?: ""))
             }
@@ -42,11 +50,10 @@ class VoterInfoViewModel(app: Application, private val repository: CivicEngageme
 
     fun setElection(election: Election) {
         viewModelScope.launch(Dispatchers.IO) {
-           // val election = repository.getElectionById(election.id)
+            // val election = repository.getElectionById(election.id)
             _election.postValue(repository.getElectionById(election.id))
         }
     }
-
 
 
     //Add var and methods to save and remove elections to local database

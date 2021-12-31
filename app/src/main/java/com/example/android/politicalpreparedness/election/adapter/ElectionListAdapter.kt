@@ -26,7 +26,7 @@ class ElectionListAdapter(private val clickListener: ElectionListener) :
 
 }
 
-    //Create ElectionViewHolder
+//Create ElectionViewHolder
 class ElectionViewHolder private constructor(
     private val binding: ItemElectionBinding,
     private val clickListener: ElectionListener

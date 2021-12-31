@@ -16,7 +16,7 @@ interface ElectionDao {
 
     //Add select all election query
     @Query("SELECT * FROM election_table")
-     fun getAllElections(): LiveData<List<Election>>
+    fun getAllElections(): LiveData<List<Election>>
 
     //Add select single election query
     @Query("SELECT * FROM election_table WHERE id = :id")
@@ -31,6 +31,6 @@ interface ElectionDao {
     suspend fun clear()
 
     @Query("SELECT * FROM election_table WHERE isFollowed = 1")
-     fun getFollowedElections(): LiveData<List<Election>>
+    fun getFollowedElections(): LiveData<List<Election>>
 
 }

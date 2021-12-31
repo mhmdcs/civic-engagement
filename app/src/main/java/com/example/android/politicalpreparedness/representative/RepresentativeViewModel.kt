@@ -7,8 +7,8 @@ import com.example.android.politicalpreparedness.repository.CivicEngagementRepos
 import com.example.android.politicalpreparedness.representative.model.Representative
 import kotlinx.coroutines.launch
 
-class RepresentativeViewModel(app: Application, private val repository: CivicEngagementRepository): AndroidViewModel(app) {
-
+class RepresentativeViewModel(app: Application, private val repository: CivicEngagementRepository) :
+    AndroidViewModel(app) {
 
 
     //Establish live data for representatives and address
@@ -56,7 +56,15 @@ class RepresentativeViewModel(app: Application, private val repository: CivicEng
 
     fun loadRepresentatives() {
         viewModelScope.launch {
-            getRepresentativesByAddress(Address(addressLine1.value!!,addressLine2.value,city.value!!,state.value!!,zip.value!!))
+            getRepresentativesByAddress(
+                Address(
+                    addressLine1.value!!,
+                    addressLine2.value,
+                    city.value!!,
+                    state.value!!,
+                    zip.value!!
+                )
+            )
         }
     }
 

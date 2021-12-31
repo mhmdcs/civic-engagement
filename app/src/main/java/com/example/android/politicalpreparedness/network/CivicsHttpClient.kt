@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 
-class CivicsHttpClient: OkHttpClient() {
+class CivicsHttpClient : OkHttpClient() {
 
     companion object {
 

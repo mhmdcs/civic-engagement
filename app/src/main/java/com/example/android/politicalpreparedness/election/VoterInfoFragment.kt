@@ -21,9 +21,11 @@ class VoterInfoFragment : Fragment() {
     /**Hint: You will need to ensure proper data is provided from previous fragment.*/
     private val args: VoterInfoFragmentArgs by navArgs()
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         binding = FragmentVoterInfoBinding.inflate(inflater)
 
@@ -65,7 +67,7 @@ class VoterInfoFragment : Fragment() {
     private fun loadURL(url: String?) {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)
-        if (intent.resolveActivity(requireContext().packageManager) != null){
+        if (intent.resolveActivity(requireContext().packageManager) != null) {
             startActivity(intent)
         }
     }

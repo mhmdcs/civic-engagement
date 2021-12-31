@@ -39,9 +39,11 @@ class RepresentativeFragment : Fragment() {
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         binding = FragmentRepresentativeBinding.inflate(inflater)
         //Establish bindings
@@ -89,7 +91,11 @@ class RepresentativeFragment : Fragment() {
 
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         //Handle location permission result to get location on permission granted
 
@@ -100,17 +106,24 @@ class RepresentativeFragment : Fragment() {
         }
 
     }
+
     private fun checkLocationPermissions() {
         return if (isPermissionGranted()) {
             getLocation()
         } else {
-            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSIONS_CODE)
+            requestPermissions(
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_LOCATION_PERMISSIONS_CODE
+            )
         }
     }
 
 
     private fun isPermissionGranted(): Boolean {
-        return (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+        return (ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED)
     }
 
     @SuppressLint("MissingPermission")
@@ -121,7 +134,10 @@ class RepresentativeFragment : Fragment() {
             if (location != null) {
                 //The geoCodeLocation method is a helper function to change the lat/long location to a human readable street address
                 viewModel.getRepresentativesByAddress(geoCodeLocation(location))
-                Log.i("RepresentativeFragment","location: "+geoCodeLocation(location).toFormattedString())
+                Log.i(
+                    "RepresentativeFragment",
+                    "location: " + geoCodeLocation(location).toFormattedString()
+                )
             }
         }
     }
@@ -131,7 +147,13 @@ class RepresentativeFragment : Fragment() {
         val geocoder = Geocoder(context, Locale.getDefault())
         return geocoder.getFromLocation(location.latitude, location.longitude, 1)
             .map { address ->
-                Address(address.thoroughfare, address.subThoroughfare, address.locality, address.adminArea, address.postalCode)
+                Address(
+                    address.thoroughfare,
+                    address.subThoroughfare,
+                    address.locality,
+                    address.adminArea,
+                    address.postalCode
+                )
             }
             .first()
     }

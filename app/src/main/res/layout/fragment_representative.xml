@@ -5,6 +5,7 @@
 
     <!-- Added data binding node via data and variable tags -->
     <data>
+
         <variable
             name="viewModel"
             type="com.example.android.politicalpreparedness.representative.RepresentativeViewModel" />
@@ -22,8 +23,8 @@
             android:id="@+id/representative_search_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:paddingHorizontal="@dimen/default_padding"
+            android:singleLine="true"
             android:text="@string/representative_search"
             android:textColor="@color/black"
             android:textSize="@dimen/header_text_size"
@@ -37,11 +38,11 @@
             android:id="@+id/representative_input_address_line_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@={viewModel.addressLine1}"
-            android:paddingHorizontal="@dimen/default_padding"
             android:autofillHints="@string/representative_address_line_1"
             android:hint="@string/representative_address_line_1"
             android:inputType="textPostalAddress"
+            android:paddingHorizontal="@dimen/default_padding"
+            android:text="@={viewModel.addressLine1}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_search_textview" />
@@ -54,9 +55,9 @@
             android:layout_height="wrap_content"
             android:autofillHints="@string/representative_address_line_2"
             android:hint="@string/representative_address_line_2"
-            android:text="@={viewModel.addressLine2}"
             android:inputType="textPostalAddress"
             android:paddingHorizontal="@dimen/default_padding"
+            android:text="@={viewModel.addressLine2}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_input_address_line_1" />
@@ -69,9 +70,9 @@
             android:layout_height="wrap_content"
             android:autofillHints="@string/representative_city"
             android:hint="@string/representative_city"
-            android:text="@={viewModel.city}"
             android:inputType="textPostalAddress"
             android:paddingHorizontal="@dimen/default_padding"
+            android:text="@={viewModel.city}"
             app:layout_constraintEnd_toStartOf="@id/representative_dropdownlist_state"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_input_address_line_2" />
@@ -79,14 +80,14 @@
         <!-- Add default values from provided resources  -->
         <!-- Add data binding value -->
         <!-- Add visual styling and content -->
-<!--        app:stateValue="@{viewModel.state}"-->
+        <!--        app:stateValue="@{viewModel.state}"-->
         <Spinner
             android:id="@+id/representative_dropdownlist_state"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints="@string/representative_state"
-            android:text="@={viewModel.state"
             android:inputType="textPostalAddress"
+            android:text="@={viewModel.state"
             app:layout_constraintBottom_toBottomOf="@id/representative_input_city"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/representative_input_city"
@@ -94,32 +95,32 @@
 
         <!-- Add data binding value -->
         <!-- Add visual styling and content -->
-<!--        android:text="@={viewModel.zip}"-->
+        <!--        android:text="@={viewModel.zip}"-->
         <EditText
             android:id="@+id/representative_input_zip_code"
             android:layout_width="0dp"
-            android:paddingHorizontal="@dimen/default_padding"
             android:layout_height="wrap_content"
             android:autofillHints="@string/representative_zip"
             android:hint="@string/representative_zip"
-            android:text="@={viewModel.zip}"
             android:inputType="number"
             android:maxLength="6"
+            android:paddingHorizontal="@dimen/default_padding"
+            android:text="@={viewModel.zip}"
             app:layout_constraintEnd_toEndOf="@id/representative_input_city"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_input_city" />
 
         <!-- Added visual styling and label -->
-<!--        android:onClick="@{() -> viewModel.fetchRepresentatives()}"-->
+        <!--        android:onClick="@{() -> viewModel.fetchRepresentatives()}"-->
         <Button
             android:id="@+id/representative_find_my_representatives_manual_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margin_small"
-            android:text="@string/representative_find_my_representatives_manually_button"
-            app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/colorPrimaryDark"
+            android:text="@string/representative_find_my_representatives_manually_button"
             android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_input_zip_code" />
 
@@ -128,11 +129,11 @@
             android:id="@+id/representative_find_my_representatives_my_location_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:background="@color/colorPrimaryDark"
             android:layout_marginHorizontal="@dimen/default_margin_small"
             android:layout_marginTop="@dimen/default_margin_small"
+            android:background="@color/colorPrimaryDark"
             android:text="@string/representative_find_my_representatives_through_my_location_button"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_find_my_representatives_manual_button" />
@@ -142,8 +143,8 @@
             android:id="@+id/representative_my_representatives_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/default_padding"
             android:layout_marginTop="@dimen/default_margin_small"
+            android:paddingHorizontal="@dimen/default_padding"
             android:text="@string/representative_my_representatives"
             android:textColor="@color/black"
             android:textSize="@dimen/header_text_size"
@@ -167,13 +168,12 @@
 
         <ProgressBar
             android:id="@+id/representative_progress_bar"
-            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/representative_my_representatives_textview"
-            />
+            app:layout_constraintTop_toBottomOf="@id/representative_my_representatives_textview" />
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
