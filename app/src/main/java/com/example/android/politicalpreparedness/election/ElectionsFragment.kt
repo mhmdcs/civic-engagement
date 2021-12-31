@@ -32,7 +32,7 @@ class ElectionsFragment : Fragment() {
         //Added binding values
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        //TODO: Link elections to voter info
+        //Link elections to voter info
 
         //Initiate upcomingElectionsAdapter recycler adapter
         val upcomingElectionsAdapter = ElectionListAdapter {
