@@ -49,10 +49,9 @@ class RepresentativeFragment : Fragment() {
         //Establish bindings
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.executePendingBindings() //call executePendingBindings immediately to apply the binding before the view state is restore and save user inputs on configuration change https://stackoverflow.com/questions/42190106/how-to-keep-user-inputs-on-screen-orientation-change-with-android-databinding-li
 
-        representativesListAdapter = RepresentativeListAdapter(RepresentativeListener {
-        })
-
+        representativesListAdapter = RepresentativeListAdapter(RepresentativeListener {})
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.states,
@@ -71,23 +70,16 @@ class RepresentativeFragment : Fragment() {
             })
 
         binding.representativeFindMyRepresentativesManualButton.setOnClickListener {
+
             hideKeyboard()
             viewModel.loadRepresentatives()
 
         }
 
-        binding.representativeInputAddressLine1.setText(viewModel.addressLine1.value)
-        binding.representativeInputAddressLine2.setText(viewModel.addressLine2.value)
-        binding.representativeInputCity.setText(viewModel.city.value)
-        binding.representativeDropdownlistState.prompt = viewModel.state.value
-        binding.representativeInputZipCode.setText(viewModel.zip.value)
-
-
         binding.representativeFindMyRepresentativesMyLocationButton.setOnClickListener {
             hideKeyboard()
             checkLocationPermissions()
         }
-
 
         return binding.root
 
