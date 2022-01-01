@@ -42,7 +42,6 @@
             android:hint="@string/representative_address_line_1"
             android:inputType="textPostalAddress"
             android:paddingHorizontal="@dimen/default_padding"
-            android:text="@={viewModel.addressLine1}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_search_textview" />
@@ -57,7 +56,6 @@
             android:hint="@string/representative_address_line_2"
             android:inputType="textPostalAddress"
             android:paddingHorizontal="@dimen/default_padding"
-            android:text="@={viewModel.addressLine2}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_input_address_line_1" />
@@ -72,7 +70,6 @@
             android:hint="@string/representative_city"
             android:inputType="textPostalAddress"
             android:paddingHorizontal="@dimen/default_padding"
-            android:text="@={viewModel.city}"
             app:layout_constraintEnd_toStartOf="@id/representative_dropdownlist_state"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_input_address_line_2" />
@@ -87,7 +84,6 @@
             android:layout_height="0dp"
             android:autofillHints="@string/representative_state"
             android:inputType="textPostalAddress"
-            android:text="@={viewModel.state"
             app:layout_constraintBottom_toBottomOf="@id/representative_input_city"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/representative_input_city"
@@ -105,7 +101,6 @@
             android:inputType="number"
             android:maxLength="6"
             android:paddingHorizontal="@dimen/default_padding"
-            android:text="@={viewModel.zip}"
             app:layout_constraintEnd_toEndOf="@id/representative_input_city"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_input_city" />

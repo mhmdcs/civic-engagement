@@ -59,7 +59,7 @@ class RepresentativeViewModel(app: Application, private val repository: CivicEng
             getRepresentativesByAddress(
                 Address(
                     addressLine1.value!!,
-                    addressLine2.value,
+                    addressLine2.value!!,
                     city.value!!,
                     state.value!!,
                     zip.value!!

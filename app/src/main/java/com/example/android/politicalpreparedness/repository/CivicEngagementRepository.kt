@@ -14,8 +14,8 @@ class CivicEngagementRepository(
     private val electionDao: ElectionDao,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
-    val electionsFollowed: LiveData<List<Election>> = electionDao.getFollowedElections()
-    val electionsUpcoming: LiveData<List<Election>> = electionDao.getAllElections()
+     val electionsFollowed: LiveData<List<Election>>  = electionDao.getFollowedElections()
+     val electionsUpcoming: LiveData<List<Election>> = electionDao.getAllElections()
 
     suspend fun getRepresentatives(address: Address) = withContext(ioDispatcher) {
         CivicsApi.retrofitService.getRepresentatives(address.zip)
@@ -25,6 +25,7 @@ class CivicEngagementRepository(
         val response = CivicsApi.retrofitService.getUpcomingElections()
         val elections = response.elections
         electionDao.insertAll(*elections.toTypedArray())
+        electionsFollowed
     }
 
     suspend fun updateElection(election: Election) = withContext(ioDispatcher) {

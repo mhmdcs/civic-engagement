@@ -50,7 +50,9 @@ class RepresentativeFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        representativesListAdapter = RepresentativeListAdapter(RepresentativeListener {})
+        representativesListAdapter = RepresentativeListAdapter(RepresentativeListener {
+        })
+
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.states,
@@ -69,16 +71,23 @@ class RepresentativeFragment : Fragment() {
             })
 
         binding.representativeFindMyRepresentativesManualButton.setOnClickListener {
-
             hideKeyboard()
             viewModel.loadRepresentatives()
 
         }
 
+        binding.representativeInputAddressLine1.setText(viewModel.addressLine1.value)
+        binding.representativeInputAddressLine2.setText(viewModel.addressLine2.value)
+        binding.representativeInputCity.setText(viewModel.city.value)
+        binding.representativeDropdownlistState.prompt = viewModel.state.value
+        binding.representativeInputZipCode.setText(viewModel.zip.value)
+
+
         binding.representativeFindMyRepresentativesMyLocationButton.setOnClickListener {
             hideKeyboard()
             checkLocationPermissions()
         }
+
 
         return binding.root
 
