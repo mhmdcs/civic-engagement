@@ -23,6 +23,7 @@
             android:id="@+id/representative_search_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/default_padding"
             android:paddingHorizontal="@dimen/default_padding"
             android:singleLine="true"
             android:text="@string/representative_search"
@@ -114,10 +115,9 @@
         <!--        android:onClick="@{() -> viewModel.fetchRepresentatives()}"-->
         <Button
             android:id="@+id/representative_find_my_representatives_manual_button"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margin_small"
-            android:background="@color/colorPrimaryDark"
             android:text="@string/representative_find_my_representatives_manually_button"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,11 +127,10 @@
         <!-- Added visual styling and content -->
         <Button
             android:id="@+id/representative_find_my_representatives_my_location_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margin_small"
             android:layout_marginTop="@dimen/default_margin_small"
-            android:background="@color/colorPrimaryDark"
             android:text="@string/representative_find_my_representatives_through_my_location_button"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

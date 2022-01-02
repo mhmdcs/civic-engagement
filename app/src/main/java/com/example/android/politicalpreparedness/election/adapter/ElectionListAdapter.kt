@@ -30,8 +30,8 @@ class ElectionListAdapter(private val clickListener: ElectionListener) :
 class ElectionViewHolder private constructor(
     private val binding: ItemElectionBinding,
     private val clickListener: ElectionListener
-) :
-    RecyclerView.ViewHolder(binding.root) {
+): RecyclerView.ViewHolder(binding.root) {
+
     fun bind(election: Election) {
         binding.election = election
         binding.clickListener = clickListener
@@ -56,7 +56,6 @@ object ElectionDiffCallback : DiffUtil.ItemCallback<Election>() {
     override fun areItemsTheSame(oldItem: Election, newItem: Election) = oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: Election, newItem: Election) = oldItem == newItem
-
 }
 
 //Create ElectionListener

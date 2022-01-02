@@ -22,11 +22,10 @@
         <!-- Added Button to navigate to upcoming elections. -->
         <Button
             android:id="@+id/launch_upcoming_election_button"
-            android:layout_width="0dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin_small"
-            android:background="@color/colorPrimaryDark"
             android:text="@string/upcoming_elections"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/launch_find_my_representatives_button"
@@ -36,11 +35,10 @@
         <!-- Added Button to navigate to representatives. -->
         <Button
             android:id="@+id/launch_find_my_representatives_button"
-            android:layout_width="0dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
-            android:background="@color/colorPrimaryDark"
             android:text="@string/find_my_representatives"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

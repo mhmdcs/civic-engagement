@@ -9,7 +9,7 @@
         <path
             android:name="path"
             android:pathData="M 23.06 228.63 L 23.06 308.63 L 303.06 308.63 L 303.06 228.63 Z"
-            android:fillColor="@color/colorPrimaryDark"
+            android:fillColor="@color/colorPrimaryVariant"
             android:strokeWidth="8"
             android:fillType="evenOdd"/>
         <path
@@ -34,7 +34,7 @@
         <path
             android:name="path_4"
             android:pathData="M 5.06 86.63 L 37.06 5.63 L 86.06 31.63 L 52.06 110.63 Z"
-            android:fillColor="@color/colorPrimaryDark"
+            android:fillColor="@color/colorPrimaryVariant"
             android:strokeWidth="8"
             android:fillType="evenOdd"/>
         <path
