@@ -59,11 +59,11 @@ object CivicsApi {
     }
 }
 
-//sample for voterinfo GET request method
-//https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address=1263%20Pacific%20Ave.%20Kansas%20City%20KS&electionId=2000&key=AIzaSyDDqCD2-unyH0-yHLiGEkHSPxsbmgOeV5s
-
 //sample for elections GET request method
 //https://civicinfo.googleapis.com/civicinfo/v2/elections?key=AIzaSyDDqCD2-unyH0-yHLiGEkHSPxsbmgOeV5s
+
+//sample for voterinfo GET request method
+//https://civicinfo.googleapis.com/civicinfo/v2/voterinfo?address=1263%20Pacific%20Ave.%20Kansas%20City%20KS&electionId=2000&key=AIzaSyDDqCD2-unyH0-yHLiGEkHSPxsbmgOeV5s
 
 //sample for representatives GET request method
 //https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyDDqCD2-unyH0-yHLiGEkHSPxsbmgOeV5s&address=1263%20Pacific%20Ave.%20Kansas%20City%20KS

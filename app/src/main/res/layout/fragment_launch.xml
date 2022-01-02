@@ -19,7 +19,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ballot_logo" />
 
-
         <!-- Added Button to navigate to upcoming elections. -->
         <Button
             android:id="@+id/launch_upcoming_election_button"
