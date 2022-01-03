@@ -26,6 +26,10 @@ class ElectionsViewModel(app: Application, private val repository: CivicEngageme
     val followedElections: LiveData<List<Election>>
         get() = repository.electionsFollowed
 
+    init {
+        refreshElections()
+    }
+
     //Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
     private fun refreshElections() {
         viewModelScope.launch {
@@ -38,10 +42,6 @@ class ElectionsViewModel(app: Application, private val repository: CivicEngageme
         navigationCommand.value = NavigationCommand.To(
             ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(election)
         )
-    }
-
-    init {
-        refreshElections()
     }
 
 }

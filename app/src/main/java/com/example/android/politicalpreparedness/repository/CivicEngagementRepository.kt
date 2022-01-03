@@ -1,5 +1,6 @@
 package com.example.android.politicalpreparedness.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.network.CivicsApi
@@ -9,6 +10,7 @@ import com.example.android.politicalpreparedness.representative.model.Representa
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class CivicEngagementRepository(
     private val electionDao: ElectionDao,
@@ -18,14 +20,27 @@ class CivicEngagementRepository(
      val electionsUpcoming: LiveData<List<Election>> = electionDao.getAllElections()
 
     suspend fun getRepresentatives(address: Address) = withContext(ioDispatcher) {
-        CivicsApi.retrofitService.getRepresentatives(address.zip)
+        try {
+            CivicsApi.retrofitService.getRepresentatives(address.zip)
+        }
+    catch (error: Exception){
+        error.printStackTrace()
+        Log.i("Repository", "Fetch data Error $error")
+    }
     }
 
     suspend fun refreshElectionsData() = withContext(ioDispatcher) {
-        val response = CivicsApi.retrofitService.getUpcomingElections()
-        val elections = response.elections
-        electionDao.insertAll(*elections.toTypedArray())
-        electionsFollowed
+        try {
+            val response = CivicsApi.retrofitService.getUpcomingElections()
+            Log.i("Repository", "Is the list of products empty? $response")
+            val elections = response.elections
+            electionDao.insertAll(*elections.toTypedArray())
+            electionsFollowed
+        }
+        catch (error: Exception){
+            error.printStackTrace()
+            Log.i("Repository", "Fetch data Error $error")
+        }
     }
 
     suspend fun updateElection(election: Election) = withContext(ioDispatcher) {
@@ -37,7 +52,13 @@ class CivicEngagementRepository(
     }
 
     suspend fun getVoterInfo(address: String, electionId: Int) = withContext(ioDispatcher) {
+        try {
         CivicsApi.retrofitService.getVoterInfo(address, electionId)
+        }
+        catch (error: Exception){
+            error.printStackTrace()
+            Log.i("Repository", "Fetch data Error $error")
+        }
     }
 
     suspend fun deleteElection(election: Election) = withContext(ioDispatcher) {
