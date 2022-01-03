@@ -20,13 +20,7 @@ class CivicEngagementRepository(
      val electionsUpcoming: LiveData<List<Election>> = electionDao.getAllElections()
 
     suspend fun getRepresentatives(address: Address) = withContext(ioDispatcher) {
-        try {
-            CivicsApi.retrofitService.getRepresentatives(address.zip)
-        }
-    catch (error: Exception){
-        error.printStackTrace()
-        Log.i("Repository", "Fetch data Error $error")
-    }
+        CivicsApi.retrofitService.getRepresentatives(address.zip)
     }
 
     suspend fun refreshElectionsData() = withContext(ioDispatcher) {
@@ -52,13 +46,7 @@ class CivicEngagementRepository(
     }
 
     suspend fun getVoterInfo(address: String, electionId: Int) = withContext(ioDispatcher) {
-        try {
         CivicsApi.retrofitService.getVoterInfo(address, electionId)
-        }
-        catch (error: Exception){
-            error.printStackTrace()
-            Log.i("Repository", "Fetch data Error $error")
-        }
     }
 
     suspend fun deleteElection(election: Election) = withContext(ioDispatcher) {

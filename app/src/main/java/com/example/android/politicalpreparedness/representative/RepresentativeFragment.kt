@@ -119,7 +119,6 @@ class RepresentativeFragment : Fragment() {
         }
     }
 
-
     private fun isPermissionGranted(): Boolean {
         return (ContextCompat.checkSelfPermission(
             requireContext(),

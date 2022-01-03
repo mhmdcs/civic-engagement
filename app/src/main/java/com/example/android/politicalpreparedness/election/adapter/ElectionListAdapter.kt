@@ -40,8 +40,6 @@ class ElectionViewHolder private constructor(
 
     //Add companion object to inflate ViewHolder (from)
     companion object {
-        @LayoutRes
-        val LAYOUT = R.layout.item_election
         fun from(parent: ViewGroup, clickListener: ElectionListener): ElectionViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemElectionBinding.inflate(layoutInflater, parent, false)
