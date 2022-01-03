@@ -6,7 +6,7 @@ Civic Engagement is an application built to demonstrate core Kotlin and Android 
 
 The app utilizes the following libraries:
 
-* [Retrofit](https://square.github.io/retrofit/) to make api calls to an HTTP web service.
+* [Retrofit](https://square.github.io/retrofit/) to make API calls to an HTTP web service.
 * [Moshi](https://github.com/square/moshi) which handles the deserialization of the returned JSON to Kotlin data objects. 
 * [Glide](https://bumptech.github.io/glide/) to load and cache images by URL.
 * [Room](https://developer.android.com/training/data-storage/room) for local database storage.
