@@ -44,9 +44,11 @@ class RepresentativeViewModel(app: Application, private val repository: CivicEng
             if (address != null) {
                 try {
                     _address.value = address
-                    val (offices, officials) = repository.getRepresentatives(address)
-                    _representatives.value =
-                        offices.flatMap { office -> office.getRepresentatives(officials) }
+                    val response = repository.getRepresentatives(address)
+                    _representatives.value = response.offices.flatMap { office -> office.getRepresentatives(response.officials) }
+//                    val (offices, officials) = repository.getRepresentatives(address)
+//                    _representatives.value =
+//                        offices.flatMap { office -> office.getRepresentatives(officials) }
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

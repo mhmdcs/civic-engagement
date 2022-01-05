@@ -148,11 +148,11 @@ class RepresentativeFragment : Fragment() {
         return geocoder.getFromLocation(location.latitude, location.longitude, 1)
             .map { address ->
                 Address(
-                    address.thoroughfare,
-                    address.subThoroughfare,
-                    address.locality,
-                    address.adminArea,
-                    address.postalCode
+                    address?.thoroughfare,
+                    address?.subThoroughfare,
+                    address?.locality,
+                    address?.adminArea,
+                    address?.postalCode
                 )
             }
             .first()

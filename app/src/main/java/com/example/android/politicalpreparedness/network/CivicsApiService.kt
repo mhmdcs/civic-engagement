@@ -49,7 +49,7 @@ interface CivicsApiService {
 
     //Add representatives API Call https://www.googleapis.com/civicinfo/v2/representatives?key=[YOUR_APY_KEY]&address=[SOME_ADDRESS]
     @GET("representatives") //endpoint
-    suspend fun getRepresentatives(@Query("address") address: String): RepresentativeResponse //query
+    suspend fun getRepresentatives(@Query("address") address: String?): RepresentativeResponse //query
 
 }
 
