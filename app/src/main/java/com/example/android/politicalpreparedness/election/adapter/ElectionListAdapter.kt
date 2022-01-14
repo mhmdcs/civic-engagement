@@ -10,7 +10,7 @@ import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.ItemElectionBinding
 import com.example.android.politicalpreparedness.network.models.Election
 
-class ElectionListAdapter(private val clickListener: ElectionListener) :
+class ElectionListAdapter(val clickListener: ElectionListener) :
     ListAdapter<Election, ElectionViewHolder>(ElectionDiffCallback) {
 
     //Create the ViewHolder
@@ -27,11 +27,8 @@ class ElectionListAdapter(private val clickListener: ElectionListener) :
 }
 
 //Create ElectionViewHolder
-class ElectionViewHolder private constructor(
-    private val binding: ItemElectionBinding,
-    private val clickListener: ElectionListener
-): RecyclerView.ViewHolder(binding.root) {
-
+class ElectionViewHolder (val binding: ItemElectionBinding, val clickListener: ElectionListener)
+    : RecyclerView.ViewHolder(binding.root) {
     fun bind(election: Election) {
         binding.election = election
         binding.clickListener = clickListener

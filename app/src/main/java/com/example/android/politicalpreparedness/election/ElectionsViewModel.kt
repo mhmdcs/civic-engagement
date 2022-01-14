@@ -17,7 +17,6 @@ class ElectionsViewModel(app: Application, private val repository: CivicEngageme
 
     val navigationCommand: SingleLiveEvent<NavigationCommand> = SingleLiveEvent()
 
-
     //Create live data val for upcoming elections
     val upcomingElections: LiveData<List<Election>>
         get() = repository.electionsUpcoming

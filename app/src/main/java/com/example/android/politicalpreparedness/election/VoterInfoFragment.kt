@@ -44,7 +44,13 @@ class VoterInfoFragment : Fragment() {
                 if (!it.isFollowed) getString(R.string.voterinfo_follow_election) else getString(R.string.voterinfo_unfollow_election)
         }
 
-        //Populate voter info -- hide views without provided data.
+        //Populate voter info -- hide views without provided data - using function reference (reflection)
+        viewModel.voterInfo.observe(viewLifecycleOwner, this::populateVoterInfo) //`this` keyword is optional, `::` operator makes a function act like a lambda
+//        viewModel.voterInfo.observe(viewLifecycleOwner, {populateVoterInfo(it)}) //same as the above but using lambda instead of function reference reflection
+//        viewModel.voterInfo.observe(viewLifecycleOwner) {populateVoterInfo(it)} //same as above but with the lambda argument out of the parentheses
+
+        //Populate voter info -- hide views without provided data - classic way with lambda expression without any named functions
+        /*
         viewModel.voterInfo.observe(viewLifecycleOwner, { voterInfoResponse ->
             val adminBody = voterInfoResponse.state?.firstOrNull()?.electionAdministrationBody
 
@@ -56,11 +62,27 @@ class VoterInfoFragment : Fragment() {
             binding.ballotInformationTextview.setOnClickListener {
                 loadURL(adminBody?.ballotInfoUrl)
             }
-        })
+        })*/
 
         return binding.root
 
     }
+
+    //will be used as function reference reflection
+    private fun populateVoterInfo(voterInfoResponse: VoterInfoResponse){
+        val adminBody = voterInfoResponse.state?.firstOrNull()?.electionAdministrationBody
+
+        //Handle loading of URLs
+        binding.voterInfoVotingLocationsTextview.setOnClickListener {
+            loadURL(adminBody?.votingLocationFinderUrl)
+        }
+
+        binding.ballotInformationTextview.setOnClickListener {
+            loadURL(adminBody?.ballotInfoUrl)
+        }
+    }
+
+
 
     //Create method to load URL intents
     @SuppressLint("QueryPermissionsNeeded")

@@ -51,7 +51,7 @@ class RepresentativeFragment : Fragment() {
         binding.viewModel = viewModel
         binding.executePendingBindings() //call executePendingBindings immediately to apply the binding before the view state is restore and save user inputs on configuration change https://stackoverflow.com/questions/42190106/how-to-keep-user-inputs-on-screen-orientation-change-with-android-databinding-li
 
-        representativesListAdapter = RepresentativeListAdapter(RepresentativeListener {})
+        representativesListAdapter = RepresentativeListAdapter()
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.states,
